@@ -6,13 +6,9 @@ using System.Threading.Tasks;
 
 namespace ClarieTheme.Controllers
 {
-    public class ProductController : Controller
+    public class SearchController : Controller
     {
         public IActionResult Index()
-        {
-            return View();
-        }
-        public IActionResult Detail()
         {
             return View();
         }

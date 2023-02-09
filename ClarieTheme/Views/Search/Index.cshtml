@@ -1,6 +1,6 @@
 ﻿
 @{
-    ViewData["Title"] = "Detail";
+    ViewData["Title"] = "Index";
 }
 
 <!DOCTYPE html>
@@ -12,7 +12,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Clarie-theme</title>
     <link rel="stylesheet" href="~/assets/css/bootstrap.css">
-    <link rel="stylesheet" href="~/assets/css/productdetail.css">
+    <link rel="stylesheet" href="~/assets/css/search.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
 </head>
 
@@ -20,7 +20,7 @@
     <div class="container1">
         <div class="row align-items-center justify-content-between">
             <div class="col-lg-6">
-                <img src="~/assets/images/product/headerlogo.jpg" alt="logo">
+                <img src="~/assets/images/logo.jpg" alt="logo">
             </div>
         </div>
         <div class="nav ">
@@ -39,7 +39,6 @@
                 &#9776;
                 Menu
             </span>
-
             <a asp-controller="search" asp-action="index"><i class="fa-solid fa-magnifying-glass"></i></a>
             <a asp-controller="login" asp-action="index"><i class="fa-regular fa-user"></i></a>
             <a asp-controller="basket" asp-action="index" class="position-relative">
@@ -48,60 +47,19 @@
         </div>
     </div>
     <div class="main">
-        <h1>PRODUCT</h1>
-        <h5><a asp-controller="home" asp-action="index">Home</a>/ <a href="products.html">Ceramic</a>/ Jug ceramics</h5>
+        <h1>SEARCH</h1>
+        <h5><a asp-controller="home" asp-action="index">Home</a>/ Search</h5>
     </div>
-    <div class="ceramics">
-        <div id="image">
-            <img src="~/assets/images/product/img2.jpg" alt="">
-        </div>
-        <div class="detail">
-            <h2>Jug ceramics</h2>
-            <div class="details">
-                <div id="left">
-                    <p>Price:</p>
-                    <p>Material:</p>
-                    <p>Dimesions:</p>
-                    <p>Vendor:</p>
-                    <p>Type:</p>
-                    <p>Availability:</p>
-                    <p>Quantity:</p>
-                    <div class="btn">
-                        <div id="shopbtn">
-                            <a asp-controller="product" asp-action="index"><button>Add To Cart</button></a>
-                        </div>
-                    </div>
-                </div>
-                <div id="right">
-                    <div class="price">
-                        <div id="newprice">
-                            Rs. 150.00
-                        </div>
-                        <del id="oldprice">
-                            Rs. 160.00
-                        </del>
-                    </div>
-                    <label for="">Fiber</label>
-                    <div id="lbl">
-                        <label for="">100 grams</label>
-                    </div>
-                    <a asp-controller="product" asp-action="index">Curio</a>
-                    <p>Pottery & Sculpting Materials</p>
-                    <div id="stock">
-                        <p>In stock!</p>
-                    </div>
-                    <div class="number">
-                        <span class="minus">-</span>
-                        <input type="text" value="1" />
-                        <span class="plus">+</span>
-                    </div>
-                    <div class="btn">
-                        <div id="shopbtn2">
-                            <a asp-controller="product" asp-action="index"><button>Buy it now</button></a>
-                        </div>
-                    </div>
-                </div>
+    <div class="search ">
+        <h1>Search for products on our site</h1>
+        <div class="input d-flex   align-items-center  justify-content-center ">
+            <div class="border py-3">
+                <input type="search" placeholder="Search" class="ps-2 border-0 ">
+                <a href="">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                </a>
             </div>
+
         </div>
     </div>
     <div class="py-5">
@@ -109,7 +67,7 @@
             <div class="row signup align-items-center justify-content-between">
                 <div class="col-lg-4">
                     <div id="flogo">
-                        <img src="~/assets/images/product/logo1.jpg" alt="">
+                        <img src="~/assets/images/footerlogo.jpg" alt="">
                     </div>
                 </div>
                 <div class="col-lg-4">
@@ -130,7 +88,6 @@
             </div>
         </div>
     </div>
-
     <div>
         <div class="container">
             <div class="footer row">
@@ -156,14 +113,13 @@
                     <p>0000 - 123 - 456789</p>
                 </div>
                 <div id="footerlogo" class="col-lg-2">
-                    <img src="~/assets/images/product/logo2.jpg" class="w-100" alt="">
+                    <img src="~/assets/images/img2.jpg" class="w-100" alt="">
                 </div>
             </div>
         </div>
     </div>
     <script src="~/assets/js/jquery.js"></script>
-    <script src="~/assets/js/productdetail.js"></script>
+    <script src="~/assets/js/search.js"></script>
 </body>
 
 </html>
-
