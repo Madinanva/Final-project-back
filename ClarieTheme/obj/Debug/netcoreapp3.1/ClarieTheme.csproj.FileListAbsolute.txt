@@ -157,3 +157,4 @@ C:\Users\Madina Nva\source\repos\ClarieTheme\ClarieTheme\obj\Debug\netcoreapp3.1
 C:\Users\Madina Nva\source\repos\ClarieTheme\ClarieTheme\obj\Debug\netcoreapp3.1\Razor\Views\Product\Index.cshtml.g.cs
 C:\Users\Madina Nva\source\repos\ClarieTheme\ClarieTheme\obj\Debug\netcoreapp3.1\Razor\Views\Product\Detail.cshtml.g.cs
 C:\Users\Madina Nva\source\repos\ClarieTheme\ClarieTheme\obj\Debug\netcoreapp3.1\Razor\Views\Search\Index.cshtml.g.cs
+C:\Users\Madina Nva\source\repos\ClarieTheme\ClarieTheme\obj\Debug\netcoreapp3.1\Razor\Views\Services\Index.cshtml.g.cs
