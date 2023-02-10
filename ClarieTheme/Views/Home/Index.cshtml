@@ -1,4 +1,4 @@
-﻿
+﻿@model HomeVM
 @{
     ViewData["Title"] = "Index";
 }
@@ -53,27 +53,16 @@
     </div>
     <div class="position-relative">
         <div class="slider">
-            <div style="background-image : url(assets/images/slider1.jpg); height: 600px;  background-position: center;">
-                <div class="cntnt">
-                    <h6>It’s made in japan</h6>
-                    <h1>Embrace the pottery with new passion</h1>
-                    <a asp-controller="product" asp-action="index">Discover our product</a>
+            @foreach (var slider in Model.Sliders)
+            {
+                <div style="background-image : url(assets/images/@slider.Image); height: 600px;  background-position: center;">
+                    <div class="cntnt">
+                        <h6>@slider.Subtitle</h6>
+                        <h1>@slider.MainTitle</h1>
+                        <a asp-controller="product" asp-action="index">Discover our product</a>
+                    </div>
                 </div>
-            </div>
-            <div style="background-image: url(assets/images/slider2.jpg); height: 600px; background-position: center;">
-                <div class="cntnt2">
-                    <h6>It’s made in Italy</h6>
-                    <h1>Round shape and hand-painted pots</h1>
-                    <a asp-controller="product" asp-action="index">Discover our product</a>
-                </div>
-            </div>
-            <div style="background-image: url(assets/images/slider3.jpg); height: 600px;">
-                <div class="cntnt3">
-                    <h6>It’s made in India</h6>
-                    <h1>Pot making relieve your pressure</h1>
-                    <a asp-controller="product" asp-action="index">Discover our product</a>
-                </div>
-            </div>
+            }
         </div>
         <div class="prev ">
             <i class="fa-solid fa-chevron-left " style="cursor: pointer;"></i>
@@ -110,82 +99,29 @@
         </div>
     </div>
     <div class="list">
-        <div class="box">
-            <div class="top">
-                <a href=""><i class="fa-regular fa-heart"></i></a>
-                <img src="~/assets/images/img4.jpg" alt="">
-            </div>
-            <div class="bottom">
-                <h4>
-                    <a asp-controller="product" asp-action="index">Centuray ceramic</a>
-                </h4>
-            </div>
-            <div class="price">
-                <div id="newprice">
-                    Rs. 150.00
+        @foreach (var product in Model.Products)
+        {
+            <div class="box">
+                <div class="top">
+                    <a href=""><i class="fa-regular fa-heart"></i></a>
+                    <img src="~/assets/images/product/@product.Image" alt="">
                 </div>
-                <del id="oldprice">
-                    Rs. 160.00
-                </del>
-            </div>
-        </div>
-        <div class="box">
-            <div class="top">
-                <a href=""><i class="fa-regular fa-heart"></i></a>
-                <img src="~/assets/images/img5.jpg" alt="">
-            </div>
-            <div class="bottom">
-                <h4>
-                    <a asp-controller="product" asp-action="index">Clay pottery</a>
-                </h4>
-            </div>
-            <div class="price">
-                <div id="newprice">
-                    Rs. 150.00
+                <div class="bottom">
+                    <h4>
+                        <a asp-controller="product" asp-action="index">@product.Title</a>
+                    </h4>
                 </div>
-                <del id="oldprice">
-                    Rs. 160.00
-                </del>
-            </div>
-        </div>
-        <div class="box">
-            <div class="top">
-                <a href=""><i class="fa-regular fa-heart"></i></a>
-                <img src="~/assets/images/img6.jpg" alt="">
-            </div>
-            <div class="bottom">
-                <h4>
-                    <a asp-controller="product" asp-action="index">Luxura ceramics</a>
-                </h4>
-            </div>
-            <div class="price">
-                <div id="newprice">
-                    Rs. 150.00
+                <div class="price">
+                    <div id="newprice">
+                       @product.Price
+                    </div>
+                    <del id="oldprice">
+                        @product.OldPrice
+                    </del>
                 </div>
-                <del id="oldprice">
-                    Rs. 160.00
-                </del>
             </div>
-        </div>
-        <div class="box">
-            <div class="top">
-                <a href=""><i class="fa-regular fa-heart"></i></a>
-                <img src="~/assets/images/img7.jpg" alt="">
-            </div>
-            <div class="bottom">
-                <h4>
-                    <a asp-controller="product" asp-action="index">Mut pot</a>
-                </h4>
-            </div>
-            <div class="price">
-                <div id="newprice">
-                    Rs. 150.00
-                </div>
-                <del id="oldprice">
-                    Rs. 160.00
-                </del>
-            </div>
-        </div>
+        }
+
     </div>
     <div class="btm">
         <a asp-controller="product" asp-action="index">Shop product</a>
