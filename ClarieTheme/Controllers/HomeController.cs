@@ -19,9 +19,12 @@ namespace ClarieTheme.Controllers
         }
         public async Task<IActionResult> Index()
         {
-            HomeVM homeVM = new HomeVM();
-            homeVM.Products = await _context.Products.Where(p => p.IsDeleted).ToListAsync();
-            homeVM.Sliders = await _context.Sliders.Where(s => s.IsDeleted).ToListAsync();
+            HomeVM homeVM = new HomeVM
+            {
+
+                Sliders = await _context.Sliders.Where(s => s.IsDeleted == false).ToListAsync(),
+                Products = await _context.Products.Where(p => p.IsDeleted == false).ToListAsync()
+            };
             return View(homeVM);
         }
     }

@@ -1,4 +1,4 @@
-﻿
+﻿@model List<Product>
 @{
     ViewData["Title"] = "Index";
 }
@@ -120,120 +120,29 @@
                     <div class="shop-bottom-area ">
                         <div class="many">
                             <div class="list row">
-                                <div class="box col-lg-4 mt-4">
-                                    <div class="top">
-                                        <a href=""><i class="fa-regular fa-heart"></i></a>
-                                        <img src="~/assets/images/product/img2.jpg" alt="">
-                                    </div>
-                                    <div class="bottom">
-                                        <h4>
-                                            <a asp-controller="product" asp-action="detail">Centuray ceramic</a>
-                                        </h4>
-                                    </div>
-                                    <div class="price">
-                                        <div id="newprice">
-                                            Rs. 150.00
+                                @foreach (var product in Model)
+                                {
+                                    <div class="box col-lg-4 mt-4">
+                                        <div class="top">
+                                            <a href=""><i class="fa-regular fa-heart"></i></a>
+                                            <img src="~/assets/images/product/@product.Image" alt="">
                                         </div>
-                                        <del id="oldprice">
-                                            Rs. 160.00
-                                        </del>
-                                    </div>
-                                </div>
-                                <div class="box col-lg-4 mt-4">
-                                    <div class="top">
-                                        <a href=""><i class="fa-regular fa-heart"></i></a>
-                                        <img src="~/assets/images/product/img3.jpg" alt="">
-                                    </div>
-                                    <div class="bottom">
-                                        <h4>
-                                            <a asp-controller="product" asp-action="detail">Clay pottery</a>
-                                        </h4>
-                                    </div>
-                                    <div class="price">
-                                        <div id="newprice">
-                                            Rs. 150.00
+                                        <div class="bottom">
+                                            <h4>
+                                                <a asp-controller="product" asp-action="detail">Centuray ceramic</a>
+                                            </h4>
                                         </div>
-                                        <del id="oldprice">
-                                            Rs. 160.00
-                                        </del>
-                                    </div>
-                                </div>
-                                <div class="box col-lg-4 mt-4">
-                                    <div class="top">
-                                        <a href=""><i class="fa-regular fa-heart"></i></a>
-                                        <img src="~/assets/images/product/img4.jpg" alt="">
-                                    </div>
-                                    <div class="bottom">
-                                        <h4>
-                                            <a asp-controller="product" asp-action="detail">Luxura ceramics</a>
-                                        </h4>
-                                    </div>
-                                    <div class="price">
-                                        <div id="newprice">
-                                            Rs. 150.00
+                                        <div class="price">
+                                            <div id="newprice">
+                                               @product.Price
+                                            </div>
+                                            <del id="oldprice">
+                                               @product.OldPrice
+                                            </del>
                                         </div>
-                                        <del id="oldprice">
-                                            Rs. 160.00
-                                        </del>
                                     </div>
-                                </div>
-                                <div class="box col-lg-4 mt-4">
-                                    <div class="top">
-                                        <a href=""><i class="fa-regular fa-heart"></i></a>
-                                        <img src="~/assets/images/product/img5.jpg" alt="">
-                                    </div>
-                                    <div class="bottom">
-                                        <h4>
-                                            <a asp-controller="product" asp-action="detail">Mut pot</a>
-                                        </h4>
-                                    </div>
-                                    <div class="price">
-                                        <div id="newprice">
-                                            Rs. 150.00
-                                        </div>
-                                        <del id="oldprice">
-                                            Rs. 160.00
-                                        </del>
-                                    </div>
-                                </div>
-                                <div class="box col-lg-4 mt-4">
-                                    <div class="top">
-                                        <a href=""><i class="fa-regular fa-heart"></i></a>
-                                        <img src="~/assets/images/product/img6.jpg" alt="">
-                                    </div>
-                                    <div class="bottom">
-                                        <h4>
-                                            <a asp-controller="product" asp-action="detail">Luxura ceramics</a>
-                                        </h4>
-                                    </div>
-                                    <div class="price">
-                                        <div id="newprice">
-                                            Rs. 150.00
-                                        </div>
-                                        <del id="oldprice">
-                                            Rs. 160.00
-                                        </del>
-                                    </div>
-                                </div>
-                                <div class="box col-lg-4 mt-4">
-                                    <div class="top">
-                                        <a href=""><i class="fa-regular fa-heart"></i></a>
-                                        <img src="~/assets/images/product/img7.jpg" alt="">
-                                    </div>
-                                    <div class="bottom">
-                                        <h4>
-                                            <a asp-controller="product" asp-action="detail">Clay pottery</a>
-                                        </h4>
-                                    </div>
-                                    <div class="price">
-                                        <div id="newprice">
-                                            Rs. 150.00
-                                        </div>
-                                        <del id="oldprice">
-                                            Rs. 160.00
-                                        </del>
-                                    </div>
-                                </div>
+                                }
+
                             </div>
                         </div>
                         <div class="one">
