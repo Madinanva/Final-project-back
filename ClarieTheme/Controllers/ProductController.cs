@@ -26,7 +26,7 @@ namespace ClarieTheme.Controllers
         {
             Product product = _context.Products
                 .Where(p => !p.IsDeleted && p.Id == id).FirstOrDefault();
-            ProductDetailVM bookDetailVM = new ProductDetailVM()
+            ProductDetailVM productDetailVM = new ProductDetailVM()
             {            
                 Product = product
             };

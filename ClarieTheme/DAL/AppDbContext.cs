@@ -20,7 +20,6 @@ namespace ClarieTheme.DAL
         //public DbSet<Subscribe> Subscribes { get; set; }
         public DbSet<Blog> Blogs { get; set; }
         public DbSet<BlogTag> BlogTags { get; set; }
-        public DbSet<Product> Products { get; set; }
         public DbSet<ProductType> ProductTypes { get; set; }
         public DbSet<ProductVendor> ProductVendor { get; set; }
         public DbSet<Tag> Tags { get; set; }
@@ -28,6 +27,7 @@ namespace ClarieTheme.DAL
         public DbSet<Vendor> Vendors { get; set; }
         public DbSet<Team> Teams { get; set; }
         public DbSet<ContactForm> ContactForms { get; set; }
+        public DbSet<Product> Products { get; set; }
         //public DbSet<Message> Messages { get; set; }
     }
 }
