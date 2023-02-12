@@ -1,4 +1,5 @@
-﻿
+﻿@model Product
+
 @{
     ViewData["Title"] = "Detail";
 }
@@ -53,7 +54,7 @@
     </div>
     <div class="ceramics">
         <div id="image">
-            <img src="~/assets/images/product/img2.jpg" alt="">
+            <img src="~/assets/images/product/@Model.Image" alt="">
         </div>
         <div class="detail">
             <h2>Jug ceramics</h2>
@@ -75,10 +76,10 @@
                 <div id="right">
                     <div class="price">
                         <div id="newprice">
-                            Rs. 150.00
+                          @Model.Price
                         </div>
                         <del id="oldprice">
-                            Rs. 160.00
+                           @Model.OldPrice
                         </del>
                     </div>
                     <label for="">Fiber</label>

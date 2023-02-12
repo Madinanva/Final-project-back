@@ -27,7 +27,7 @@ namespace ClarieTheme.DAL
         public DbSet<Models.Type> Types { get; set; }
         public DbSet<Vendor> Vendors { get; set; }
         public DbSet<Team> Teams { get; set; }
-        //public DbSet<ContactForm> ContactForms { get; set; }
+        public DbSet<ContactForm> ContactForms { get; set; }
         //public DbSet<Message> Messages { get; set; }
     }
 }

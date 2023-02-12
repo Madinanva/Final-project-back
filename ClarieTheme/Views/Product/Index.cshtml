@@ -129,12 +129,12 @@
                                         </div>
                                         <div class="bottom">
                                             <h4>
-                                                <a asp-controller="product" asp-action="detail">Centuray ceramic</a>
+                                                <a asp-controller="product" asp-action="detail" asp-route-id="@product.Id">Centuray ceramic</a>
                                             </h4>
                                         </div>
                                         <div class="price">
                                             <div id="newprice">
-                                               @product.Price
+                                                @product.Price
                                             </div>
                                             <del id="oldprice">
                                                @product.OldPrice

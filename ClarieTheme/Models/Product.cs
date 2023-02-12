@@ -14,6 +14,8 @@ namespace ClarieTheme.Models
         public string Title { get; set; }
         public int Price { get; set; }
         public int OldPrice { get; set; }
+        public List<ProductVendor> ProductVendors { get; set; }
+        public List<ProductType> ProductTypes { get; set; }
     }
 }
 
