@@ -145,28 +145,15 @@ span {
     transition: 1s;
 }
 
-.blog{
-    display: flex;
-    overflow: hidden;
-    margin-left: 4rem;
-}
-
-#first{
-  width: 35%;
-  display: block;
-  padding-left: 1.5rem;
-}
 
 #first img{
 width: 100%;
-padding-left: 1rem;
 padding-bottom: 1rem;
 padding-top: 1rem;
 }
 
 #first p{
   color: #b57655;
-  padding-left: 1rem;
   padding-bottom: 1rem;
 }
 
@@ -181,7 +168,6 @@ padding-top: 1rem;
 #first h6{
   color: #1a1a1a;
   font: 18px "Frank Ruhl Libre", serif;
-  padding-left: 1rem;
   padding-bottom: 1rem;
 }
 
@@ -196,78 +182,16 @@ padding-top: 1rem;
   transition: 1s;
 }
 
-#second{
-  width: 35%;
-  display: block;
-  padding-left: 1.5rem;
-}
 
-#second img{
-  width: 100%;
-  padding-left: 1rem;
-  padding-bottom: 1rem;
-  padding-top: 1rem;
-  }
-
-#second p{
-  color: #b57655;
-  padding-left: 1rem;
-  padding-bottom: 1rem;
-}
-
-#second h3 a{
-  color: #1a1a1a;
-  font: 36px "Frank Ruhl Libre", serif;
-  text-decoration: none;
-  display: block;
-  padding-bottom: 1rem;
-}
-
-#second h6{
-  color: #1a1a1a;
-  font: 18px "Frank Ruhl Libre", serif;
-  padding-left: 1rem;
-  padding-bottom: 1rem;
-}
-
-#second a{
-  color: #1a1a1a;
-  text-decoration: underline;
-  font: 22px "Frank Ruhl Libre", serif;
-}
-
-#second a:hover{
-  color: #b57655;
-  transition: 1s;
-}
-
-#third{
-  width: 30%;
-  padding-left: 1.5rem;
-}
-
-#third h5{
-  color: #1a1a1a;
-  font: 26px "Frank Ruhl Libre", serif;
-  padding-top: 1rem;
-}
-
-#third span{
- color: #1a1a1a;
-}
 
 .articles{
 display: flex;
 padding-top: 1.5rem;
 }
 
-#image{
-width: 50%;
-}
 
 #image img{
   width: 100%;
-  display: block;
   padding-bottom: 1rem;
 }
 
@@ -322,13 +246,8 @@ width: 50%;
   color: #b57655;
 }
 
-#price p{
-  padding-left: 1.1rem;
-
-}
 
 #shop img{
-  width: 80%;
   padding-top: 2rem;
 }
 

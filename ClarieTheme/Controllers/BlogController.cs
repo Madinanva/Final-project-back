@@ -25,11 +25,11 @@ namespace ClarieTheme.Controllers
         {
             Blog blog = _context.Blogs
                .Where(p => !p.IsDeleted && p.Id == id).FirstOrDefault();
-            BlogDetailVM productDetailVM = new BlogDetailVM()
+            BlogDetailVM blogDetailVM = new BlogDetailVM()
             {
                 Blog = blog
             };
-            return View();
+            return View(blogDetailVM);
         }
     }
 }

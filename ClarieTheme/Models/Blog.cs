@@ -18,6 +18,7 @@ namespace ClarieTheme.Models
         public string Title { get; set; }
         [StringLength(1000)]
         public string Description { get; set; }
+        public  List<BlogTag> BlogTags { get; set; }
     }
 }
 

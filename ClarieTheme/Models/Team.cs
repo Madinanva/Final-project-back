@@ -8,6 +8,8 @@ namespace ClarieTheme.Models
 {
     public class Team : BaseEntity
     {
+        [StringLength(800)]
+        public string Image { get; set; }
         [StringLength(1000)]
         public string Fullname { get; set; }
         [StringLength(1000)]

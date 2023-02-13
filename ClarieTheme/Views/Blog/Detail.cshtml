@@ -1,4 +1,4 @@
-﻿@model Blog
+﻿@model BlogDetailVM
 @{
     ViewData["Title"] = "Detail";
 }
@@ -51,19 +51,19 @@
         </h5>
     </div>
     <div class="blog">
-        <img src="~/assets/images/blog/img2.jpg" alt="">
-        <h3><a asp-controller="blog" asp-action="detail">Holding pottery of earth with feel and new style</a></h3>
+        <img src="~/assets/images/blog/@Model.Blog.Image" alt="">
+        <h3><a asp-controller="blog" asp-action="detail">@Model.Blog.Title</a></h3>
         <div id="detail">
             <i class="fa-solid fa-calendar-days"></i>
-            <p>@Model.Date</p>
+            <p>@Model.Blog.Date</p>
             <i class="fa-solid fa-comment-dots"></i>
-            <p>@Model.Comment Comment</p>
+            <p>@Model.Blog.Comment Comment</p>
             <i class="fa-regular fa-circle-user"></i>
-            <p>@Model.Author</p>
+            <p>@Model.Blog.Author</p>
         </div>
         <div id="text">
             <p>
-               @Model.Description
+               @Model.Blog.Description
             </p>
         </div>
         <div class="share">

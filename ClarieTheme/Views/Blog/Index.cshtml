@@ -50,77 +50,23 @@
         <h1>NEWS</h1>
         <h5><a asp-controller="home" asp-action="index">Home</a>/ News</h5>
     </div>
-    <div class="blog">
-        <div id="first">
-            <img src="~/assets/images/blog/img2.jpg" alt="">
-            <p>By Ram M / November 23, 2021 / 1 Comment</p>
-            <h3><a asp-controller="blog" asp-action="detail">Holding pottery of earth with feel and modern new style</a></h3>
-            <h6>
-                Enieses cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam
-                felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat...
-            </h6>
-            <a asp-controller="blog" asp-action="detail">Read more</a>
-            <img src="~/assets/images/blog/img4.jpg" alt="">
-            <p>By Ram M / November 23, 2021 / 1 Comment</p>
-            <h3><a asp-controller="blog" asp-action="detail">Proud of making colorful handmade pottery look</a></h3>
-            <h6>
-                Lorem cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam
-                felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa...
-            </h6>
-            <a asp-controller="blog" asp-action="detail">Read more</a>
-        </div>
-        <div id="second">
-            <img src="~/assets/images/blog/img3.jpg" alt="">
-            <p>By Ram M / November 23, 2021 / 1 Comment</p>
-            <h3><a asp-controller="blog" asp-action="detail">Taking hold of handmade modern clay pottery</a></h3>
-            <h6>
-                Orese cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam
-                felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa...
-            </h6>
-            <a asp-controller="blog" asp-action="detail">Read more</a>
-            <img src="~/assets/images/blog/img5.jpg" alt="" height="290px">
-            <p>By Ram M / November 23, 2021 / 1 Comment</p>
-            <h3><a asp-controller="blog" asp-action="detail">Own a piece of an artist with new trending pottery</a></h3>
-            <h6>
-                Cames cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam
-                felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat...
-            </h6>
-            <a asp-controller="blog" asp-action="detail">Read more</a>
-        </div>
-        <div id="third">
-            <h5>Recent Articles</h5>
-            <span>____________________________________</span>
-            <div class="articles">
-                <div id="image">
-                    <img src="~/assets/images/blog/img2.jpg" alt="">
-                    <img src="~/assets/images/blog/img3.jpg" alt="">
+    <div class="container">
+        <div class="row">
+            <div class="blog col-lg-9">
+                <div class="row">
+                    @foreach (var blog in Model)
+                    {
+                        <div id="first" class="col-lg-6">
+                            <img src="~/assets/images/blog/@blog.Image" alt="">
+                            <p>@blog.Author / @blog.Date.ToString("dd yyyy ") / @blog.Comment Comment</p>
+                            <h3><a asp-controller="blog" asp-action="detail" asp-route-id="@blog.Id">@blog.Title</a></h3>
+                            <h6>
+                                @blog.Description
+                            </h6>
+                            <a asp-controller="blog" asp-action="detail" asp-route-id="@blog.Id">Read more</a>
+                        </div>
+                    }
                 </div>
-                <div id="title">
-                    <a asp-controller="blog" asp-action="detail">Holding pottery of earth with feel and new style</a>
-                    <a asp-controller="blog" asp-action="detail">Taking hold of handmade modern clay pottery</a>
-                </div>
-            </div>
-            <h5>Tags</h5>
-            <span>____________________________________</span>
-            <a asp-controller="blog" asp-action="index">Ceramic</a>
-            <a asp-controller="blog" asp-action="index">Pottery</a>
-            <h5>New Arrivals</h5>
-            <span>____________________________________</span>
-            <div class="arrivals">
-                <div id="ceramics">
-                    <img src="~/assets/images/blog/img6.jpg" alt="">
-                    <img src="~/assets/images/blog/img7.jpg" alt="">
-                </div>
-                <div id="price">
-                    <a asp-controller="blog" asp-action="detail">Jug ceramics</a>
-                    <p>Rs. 150.00</p>
-                    <a asp-controller="blog" asp-action="detail">Clay disc</a>
-                    <p>Rs. 150.00</p>
-                </div>
-            </div>
-            <div id="shop">
-                <img src="~/assets/images/blog/img8.jpg" alt="">
-                <a asp-controller="blog" asp-action="index"><button>Shop Now</button></a>
             </div>
         </div>
     </div>

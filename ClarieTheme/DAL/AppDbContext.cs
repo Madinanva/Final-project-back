@@ -28,6 +28,5 @@ namespace ClarieTheme.DAL
         public DbSet<Team> Teams { get; set; }
         public DbSet<ContactForm> ContactForms { get; set; }
         public DbSet<Product> Products { get; set; }
-        //public DbSet<Message> Messages { get; set; }
     }
 }
