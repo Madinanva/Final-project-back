@@ -1,4 +1,6 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using ClarieTheme.DAL;
+using ClarieTheme.Models;
+using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,9 +10,15 @@ namespace ClarieTheme.Controllers
 {
     public class AboutController : Controller
     {
+        private readonly AppDbContext _context;
+        public AboutController(AppDbContext context)
+        {
+            _context = context;
+        }
         public IActionResult Index()
         {
-            return View();
+            List<About> model = _context.Abouts.Where(a => !a.IsDeleted).ToList();
+            return View(model);
         }
     }
 }

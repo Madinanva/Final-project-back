@@ -24,16 +24,15 @@ namespace ClarieTheme.Controllers
         }
         public IActionResult Search(string search)
         {
-            List<Product> products = _context.Products.Where(p => p.IsDeleted && p.Title.ToLower().Contains(search.ToLower())).ToList();
+            List<Product> products = _context.Products.Where(p => !p.IsDeleted && p.Title.ToLower().Contains(search.ToLower())).ToList();
             return PartialView("_SearchPartial", products);
-
         }
         public IActionResult Detail(int id)
         {
             Product product = _context.Products
                 .Where(p => !p.IsDeleted && p.Id == id).FirstOrDefault();
             ProductDetailVM productDetailVM = new ProductDetailVM()
-            {            
+            {
                 Product = product
             };
             return View(product);

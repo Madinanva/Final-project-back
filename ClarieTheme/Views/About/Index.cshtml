@@ -1,4 +1,4 @@
-﻿
+﻿@model List<About>
 @{
     ViewData["Title"] = "Index";
 }
@@ -52,20 +52,22 @@
         <h5><a asp-controller="home" asp-action="index">Home</a>/ About</h5>
     </div>
     <div class="second">
-        <div id=mlogo>
-            <img src="~/assets/images/productlogo.jpg" alt="logo">
-            <div id="texts">
-                <h4>Feel the peace inside</h4>
-                <p>
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore
-                    et dolore magna aliqua.
-                </p>
-                <div id="imag">
-                    <img src="~/assets/images/img28.jpg" alt="">
-                    <img src="~/assets/images/img29.jpg" alt="">
+        @foreach (var about in Model)
+        {
+            <div id=mlogo>
+                <img src="~/assets/images/@about.Logo" alt="logo">
+                <div id="texts">
+                    <h4>@about.MainTitle</h4>
+                    <p>
+                       @about.Subtitle
+                    </p>
+                    <div id="imag">
+                        <img src="~/assets/images/@about.Image" alt="">
+                        <img src="~/assets/images/@about.Image" alt="">
+                    </div>
                 </div>
             </div>
-        </div>
+        }
     </div>
     <div id="pottery">
         <h4>New ancient pottery</h4>
@@ -102,28 +104,7 @@
                     Tellus ureumse dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut
                     labore et dolore magna aliqua.
                 </p>
-                <div class="meet">
-                    <div id="first">
-                        <img src="~/assets/images/img33.jpg" alt="">
-                        <h3>Mr. John mac</h3>
-                        <h6>Senior Potter</h6>
-                    </div>
-                    <div id="second">
-                        <img src="~/assets/images/img34.jpg" alt="">
-                        <h3>Mr. Williams philip</h3>
-                        <h6>Store Incharge</h6>
-                    </div>
-                    <div id="third">
-                        <img src="~/assets/images/img35.jpg" alt="">
-                        <h3>Ms. Maria louis</h3>
-                        <h6>Trainee Potter</h6>
-                    </div>
-                    <div id="fourth">
-                        <img src="~/assets/images/img36.jpg" alt="">
-                        <h3>Mr. David</h3>
-                        <h6>Junior Potter</h6>
-                    </div>
-                </div>
+                @Html.Partial("_TeamPartial")
                 <div class="btm">
                     <a asp-controller="product" asp-action="index">Show more</a>
                 </div>

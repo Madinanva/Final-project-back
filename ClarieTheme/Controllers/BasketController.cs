@@ -21,7 +21,18 @@ namespace ClarieTheme.Controllers
         }
         public IActionResult Index()
         {
-            return View();
+            string basket = HttpContext.Request.Cookies["basket"];
+            List<BasketVM> basketVMs = null;
+            if (!string.IsNullOrWhiteSpace(basket))
+            {
+                basketVMs = JsonConvert.DeserializeObject<List<BasketVM>>(basket);
+            }
+            else
+            {
+                basketVMs = new List<BasketVM>();
+            }
+
+            return View( await _GetBasketContent(basketVMs);
         }
         public async Task<IActionResult> AddToBasket(int? id)
         {
