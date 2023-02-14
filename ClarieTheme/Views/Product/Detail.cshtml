@@ -69,7 +69,7 @@
                     <p>Quantity:</p>
                     <div class="btn">
                         <div id="shopbtn">
-                            <a asp-controller="product" asp-action="index"><button>Add To Cart</button></a>
+                            <a class="addbasket" asp-controller="basket" asp-action="AddToBasket" asp-route-id="@Model.Id"><button class="border-0" style="outline:none;">Add To Cart</button></a>
                         </div>
                     </div>
                 </div>
@@ -98,7 +98,7 @@
                     </div>
                     <div class="btn">
                         <div id="shopbtn2">
-                            <a asp-controller="product" asp-action="index"><button>Buy it now</button></a>
+                            <a asp-controller="product" asp-action="index"><button class="border-0" style="outline:none;">Buy it now</button></a>
                         </div>
                     </div>
                 </div>

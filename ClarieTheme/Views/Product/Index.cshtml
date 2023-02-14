@@ -64,57 +64,6 @@
                                     <i class="fa-solid fa-bars"></i>
                                 </a>
                             </div>
-                            <div class="show-product-count pt-4 pt-sm-0 text-black">
-                                <span class="select-title text-black">Paginate by</span>
-                                <select name="paginateBy" id="paginateBy" class="bg-transparent text-black border-0 "
-                                        style="outline: none; cursor: pointer;">
-                                    <option value="3">
-                                        3
-                                    </option>
-                                    <option value="4">
-                                        4
-                                    </option>
-                                    <option value="5">
-                                        5
-                                    </option>
-                                    <option value="6">
-                                        6
-                                    </option>
-                                    <option value="7" selected="">
-                                        7
-                                    </option>
-                                    <option value="8">
-                                        8
-                                    </option>
-                                    <option value="9">
-                                        9
-                                    </option>
-                                    <option value="10">
-                                        10
-                                    </option>
-                                    <option value="11">
-                                        11
-                                    </option>
-                                    <option value="12">
-                                        12
-                                    </option>
-                                    <option value="13">
-                                        13
-                                    </option>
-                                </select>
-                            </div>
-                            <div class="shop-select pt-4 pt-sm-0  text-black">
-                                <label for="SortBy">Sort by :</label>
-                                <select name="SortBy" id="SortBy" class="bg-transparent text-black  border-0 "
-                                        style="outline: none; cursor: pointer;">
-                                    <option value="manual" class="text-black bg-brown">Featured</option>
-                                    <option value="best-selling" class="text-black">Best Selling</option>
-                                    <option value="title-ascending" class="text-black">Alphabetically, A-Z</option>
-                                    <option value="title-descending" class="text-black">Alphabetically, Z-A</option>
-                                    <option value="price-ascending" class="text-black">Price, low to high</option>
-                                    <option value="price-descending" class="text-black">Price, high to low</option>
-                                </select>
-                            </div>
                         </div>
                     </div>
                     <div class="shop-bottom-area ">
@@ -124,7 +73,6 @@
                                 {
                                     <div class="box col-lg-4 mt-4">
                                         <div class="top">
-                                            <a href=""><i class="fa-regular fa-heart"></i></a>
                                             <img src="~/assets/images/product/@product.Image" alt="">
                                         </div>
                                         <div class="bottom">
@@ -137,7 +85,7 @@
                                                 @product.Price
                                             </div>
                                             <del id="oldprice">
-                                               @product.OldPrice
+                                                @product.OldPrice
                                             </del>
                                         </div>
                                     </div>
@@ -145,33 +93,35 @@
 
                             </div>
                         </div>
-                        <div class="one">
-                            <div class="row ">
-                                <div class="col-lg-12 col-12">
-                                    <div class="  mt-4">
-                                        <div class="row">
-                                            <div class="col-lg-4 position-relative">
-                                                <a asp-controller="product" asp-action="detail.html">
-                                                    <img src="~/assets/images/product/img8.jpg" class="w-100" alt="">
-                                                </a>
-                                            </div>
-                                            <div class="col-lg-8 d-flex align-items-center">
-                                                <div>
-                                                    <h3 class=" d-block">
-                                                        <a asp-controller="product" asp-action="detail"
-                                                           class="text-decoration-none text-black geometric ls-1 hover2 t-5 ">
-                                                            Jug ceramics
-                                                            product
-                                                        </a>
-                                                    </h3>
-                                                    <div class="shop-list-price-ratting ">
-                                                        <div class="ht-product-list-price ">
-                                                            <span class="discounted-price ">
-                                                                <span class="money text-black fs-4">Rs. 150.00</span>
-                                                            </span>
-                                                            <span class="price ps-2 ">
-                                                                <span class="money text-black text-decoration-line-through">Rs. 160.00</span>
-                                                            </span>
+                        @foreach (var product in Model)
+                        {
+                            <div class="one">
+                                <div class="row ">
+                                    <div class="col-lg-12 col-12">
+                                        <div class="  mt-4">
+                                            <div class="row">
+                                                <div class="col-lg-4 position-relative">
+                                                    <a asp-controller="product" asp-action="detail" asp-route-id="@product.Id">
+                                                        <img src="~/assets/images/product/@product.Image" class="w-100" alt="">
+                                                    </a>
+                                                </div>
+                                                <div class="col-lg-8 d-flex align-items-center">
+                                                    <div>
+                                                        <h3 class=" d-block">
+                                                            <a asp-controller="product" asp-action="detail" asp-route-id="@product.Id"
+                                                               class="text-decoration-none text-black geometric ls-1 hover2 t-5 ">
+                                                               @product.Title
+                                                            </a>
+                                                        </h3>
+                                                        <div class="shop-list-price-ratting ">
+                                                            <div class="ht-product-list-price ">
+                                                                <span class="discounted-price ">
+                                                                    <span class="money text-black fs-4">Rs. @product.Price</span>
+                                                                </span>
+                                                                <span class="price ps-2 ">
+                                                                    <span class="money text-black text-decoration-line-through">Rs. @product.OldPrice</span>
+                                                                </span>
+                                                            </div>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -180,7 +130,7 @@
                                     </div>
                                 </div>
                             </div>
-                        </div>
+                        }
                     </div>
                 </div>
                 <div class="col-lg-3">

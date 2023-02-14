@@ -22,3 +22,25 @@ function openNav() {
         return false;
     });
 });
+
+
+$('.addbasket').click(function (e) {
+    e.preventDefault();
+
+    let url = $(this).attr('href');
+
+    fetch(url).then(res => res.text()).then(data => {
+        $('.cart').html(data);
+    });
+})
+
+$(document).on('click', '.minus', function (e) {
+    e.preventDefault();
+    let inputCount = $(this).next().val();
+    let url = $(this).attr('href') + '/?count=' + inputCount;
+    fetch(url)
+        .then(res => res.text())
+        .then(date => {
+
+        });
+})

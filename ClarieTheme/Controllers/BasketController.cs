@@ -32,7 +32,7 @@ namespace ClarieTheme.Controllers
                 basketVMs = new List<BasketVM>();
             }
 
-            return View( await _GetBasketContent(basketVMs);
+            return View( /*await _GetBasketContent(basketVMs)*/);
         }
         public async Task<IActionResult> AddToBasket(int? id)
         {
@@ -52,7 +52,7 @@ namespace ClarieTheme.Controllers
             if (!string.IsNullOrWhiteSpace(basket))
             {
                 products = JsonConvert.DeserializeObject<List<BasketVM>>(basket);
-                BasketVM basketVM = products.Find(p => p.Id == id);
+                BasketVM basketVM = products.Find(p => p.ProductId == id);
                 if (basketVM != null)
                 {
                     basketVM.Count += 1;
@@ -61,7 +61,7 @@ namespace ClarieTheme.Controllers
                 {
                     basketVM = new BasketVM
                     {
-                        Id = (int)id,
+                        ProductId = (int)id,
                         Count = 1
                     };
                     products.Add(basketVM);
@@ -72,7 +72,7 @@ namespace ClarieTheme.Controllers
                 products = new List<BasketVM>();
                 BasketVM basketVM = new BasketVM
                 {
-                    Id = (int)id,
+                    ProductId = (int)id,
                     Count = 1
                 };
                 products.Add(basketVM);
@@ -83,13 +83,20 @@ namespace ClarieTheme.Controllers
             HttpContext.Response.Cookies.Append("basket", basket);
             foreach (BasketVM item in products)
             {
-                product = await _context.Products.FirstOrDefaultAsync(p => p.IsDeleted == false && p.Id == item.Id);
+                product = await _context.Products.FirstOrDefaultAsync(p => p.IsDeleted == false && p.Id == item.ProductId);
                 item.Title = product.Title;
                 item.Image = product.Image;
                 item.Price = product.Price;
             }
-            return PartialView("_BasketCartPartial", products);
+            return PartialView("_BasketPartial", products);
         }
+
+        //public async Task<IActionResult> Update(int? id, int count)
+        //{
+        //    return Content("Ok");
+        //}
+        //Ehtiyyac yoxdu ozuvu yorma obirsileri eliyersen 
+
 
         public async Task<IActionResult> DeleteFromBasket(int? id)
         {
@@ -108,7 +115,7 @@ namespace ClarieTheme.Controllers
             if (!string.IsNullOrWhiteSpace(basket))
             {
                 products = JsonConvert.DeserializeObject<List<BasketVM>>(basket);
-                BasketVM basketVM = products.Find(p => p.Id == id);
+                BasketVM basketVM = products.Find(p => p.ProductId == id);
                 if (basketVM != null)
                 {
                     products.Remove(basketVM);
@@ -123,13 +130,13 @@ namespace ClarieTheme.Controllers
 
             foreach (BasketVM basketVM in products)
             {
-                Product product1 = await _context.Products.FirstOrDefaultAsync(p => p.Id == basketVM.Id);
+                Product product1 = await _context.Products.FirstOrDefaultAsync(p => p.Id == basketVM.ProductId);
                 basketVM.Image = product1.Image;
                 basketVM.Price = product1.Price;
                 basketVM.Title = product1.Title;
             }
 
-            return PartialView("_BasketCartPartial", products);
+            return PartialView("_BasketPartial", products);
 
         }
         public async Task<IActionResult> GetBasketContent()

@@ -68,6 +68,31 @@
                     }
                 </div>
             </div>
+
+            <div class="col-lg-3">
+                <div>
+                    <h3 style="border-bottom:2px solid black">Recent Articles</h3>
+                    @foreach (var lastBlog in Model.TakeLast(2))
+                    {
+                        <div class="d-flex align-items-center pt-4">
+                            <div class="w-50">
+                                <a asp-controller="blog" asp-action="detail" asp-route-id="@lastBlog.Id">
+                                    <img src="~/assets/images/blog/@lastBlog.Image" class="w-75" alt="Alternate Text" />
+                                </a>
+                            </div>
+                            <div class="w-50">
+                                <a  asp-controller="blog" asp-action="detail" asp-route-id="@lastBlog.Id" class="text-decoration-none text-black px-0 fs-6">@lastBlog.Title</a>
+                            </div>
+                        </div>
+                    }
+                </div>
+                <div class="pt-4">
+                    <h3 style="border-bottom:2px solid black">Tags</h3>
+                    <div>
+                        <a href="">Ceramic</a>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
     <div class="py-5">

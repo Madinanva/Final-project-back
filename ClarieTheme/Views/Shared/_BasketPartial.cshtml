@@ -39,7 +39,7 @@
             <a asp-controller="search" asp-action="index"><i class="fa-solid fa-magnifying-glass"></i></a>
             <a asp-controller="login" asp-action="index"><i class="fa-regular fa-user"></i></a>
             <a asp-controller="basket" asp-action="index" class="position-relative">
-                <i class="fa-solid fa-box-archive"></i> <span class="cartt shop-cart">0</span>
+                <i class="fa-solid fa-box-archive"></i> <span class="cartt shop-cart">@Model.Count</span>
             </a>
         </div>
     </div>
@@ -47,31 +47,37 @@
         <h1>YOUR SHOPPING CART</h1>
         <h5><a asp-controller="home" asp-action="index">Home</a>/ Your Shopping Cart</h5>
     </div>
-    @foreach (BasketVM basketVM in Model)
+    @if (Model.Count != 0)
     {
-        <div class="cart row">
+        <div class=" row">
             <div class="col-lg-6">
                 <h4>Products</h4>
-                <div class="products">
-                    <div id="left">
-                        <img src="~/assets/images/@basketVM.Image" alt="">
-                    </div>
-                    <div id="right">
-                        <a asp-controller="product" asp-action="detail">@basketVM.Title</a>
-                        <p>Fiber / 100 grams</p>
-                        <h6>Rs. @basketVM.Price</h6>
-                        <div class="number">
-                            <span class="minus">-</span>
-                            <input type="text" value="@basketVM.Count" />
-                            <span class="plus">+</span>
+                @foreach (BasketVM basketVM in Model)
+                {
+                    <div class="cart products">
+                        <div id="left" class="position-relative">
+                            <a href="" class="bg-black position-absolute start-0 top-0 px-2">
+                                <i class="fa-solid fa-xmark"></i>
+                            </a>
+                            <img src="~/assets/images/product/@basketVM.Image" alt="">
                         </div>
-                        <h6>Total : Rs. @(basketVM.Price * basketVM.Count)</h6>
+                        <div id="right">
+                            <a asp-controller="product" asp-action="detail">@basketVM.Title</a>
+                            <p>Fiber / 100 grams</p>
+                            <h6>Rs. @basketVM.Price</h6>
+                            <div class="number">
+                                <a class="minus" asp-controller="basket" asp-action="update" asp-route-id="@basketVM.ProductId">-</a>
+                                <input type="text" value="@basketVM.Count" />
+                                <a class="plus" asp-controller="basket" asp-action="update" asp-route-id="@basketVM.ProductId">+</a>
+                            </div>
+                            <h6>Total : Rs. @(basketVM.Price * basketVM.Count)</h6>
+                        </div>
                     </div>
-                </div>
+                }
             </div>
             <div class="col-lg-4">
                 <h4>Order Summary</h4>
-                <h6>Subtotal : Rs. @(Model.Sum(b=>b.Count *b.Price)</h6>
+                <h6>Subtotal : Rs. @(Model.Sum(b=>b.Count *b.Price))</h6>
                 <p>Shipping, taxes, and discounts will be calculated at checkout.</p>
                 <div id="update">
                     <a asp-controller="basket" asp-action="index"><button>Update Cart</button></a>
@@ -81,6 +87,10 @@
                 </div>
             </div>
         </div>
+    }
+    else
+    {
+        <span class="text-black">Your cart is empty</span>
     }
     <div class="py-5">
         <div class="container">

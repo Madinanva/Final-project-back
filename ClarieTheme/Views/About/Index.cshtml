@@ -1,4 +1,4 @@
-﻿@model List<About>
+﻿@model About
 @{
     ViewData["Title"] = "Index";
 }
@@ -52,23 +52,21 @@
         <h5><a asp-controller="home" asp-action="index">Home</a>/ About</h5>
     </div>
     <div class="second">
-        @foreach (var about in Model)
-        {
             <div id=mlogo>
-                <img src="~/assets/images/@about.Logo" alt="logo">
+                <img src="~/assets/images/@Model.Logo" alt="logo">
                 <div id="texts">
-                    <h4>@about.MainTitle</h4>
+                    <h4>@Model.MainTitle</h4>
                     <p>
-                       @about.Subtitle
+                       @Model.Subtitle
                     </p>
                     <div id="imag">
-                        <img src="~/assets/images/@about.Image" alt="">
-                        <img src="~/assets/images/@about.Image" alt="">
+                        <img src="~/assets/images/@Model.Image" alt="">
+                        <img src="~/assets/images/@Model.Image" alt="">
                     </div>
                 </div>
             </div>
-        }
     </div>
+       
     <div id="pottery">
         <h4>New ancient pottery</h4>
         <p>
@@ -104,7 +102,7 @@
                     Tellus ureumse dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut
                     labore et dolore magna aliqua.
                 </p>
-                @Html.Partial("_TeamPartial")
+            
                 <div class="btm">
                     <a asp-controller="product" asp-action="index">Show more</a>
                 </div>

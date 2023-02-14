@@ -40,7 +40,7 @@ namespace ClarieTheme.Services
             }
             foreach (BasketVM item in basketVMs)
             {
-                Product product = await _context.Products.FirstOrDefaultAsync(p => p.IsDeleted == false && p.Id == item.Id);
+                Product product = await _context.Products.FirstOrDefaultAsync(p => p.IsDeleted == false && p.Id == item.ProductId);
                 item.Title = product.Title;
                 item.Image = product.Image;
                 item.Price = product.Price;

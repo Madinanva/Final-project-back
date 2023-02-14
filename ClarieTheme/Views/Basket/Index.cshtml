@@ -50,38 +50,7 @@
         <h1>YOUR SHOPPING CART</h1>
         <h5><a asp-controller="home" asp-action="index">Home</a>/ Your Shopping Cart</h5>
     </div>
-    <div class="cart row">
-        <div class="col-lg-6">
-            <h4>Products</h4>
-            <div class="products">
-                <div id="left">
-                    <img src="~/assets/images/img24.jpg" alt="">
-                </div>
-                <div id="right">
-                    <a asp-controller="product" asp-action="detail">Jug ceramics</a>
-                    <p>Fiber / 100 grams</p>
-                    <h6>Rs. 150.00</h6>
-                    <div class="number">
-                        <a class="minus">-</a>
-                        <input type="text" value="1" />
-                        <span class="plus">+</span>
-                    </div>
-                    <h6>Total : Rs. 150.00</h6>
-                </div>
-            </div>
-        </div>
-        <div class="col-lg-4">
-            <h4>Order Summary</h4>
-            <h6>Subtotal : Rs. 150.00</h6>
-            <p>Shipping, taxes, and discounts will be calculated at checkout.</p>
-            <div id="update">
-                <a asp-controller="basket" asp-action="index"><button>Update Cart</button></a>
-            </div>
-            <div id="continue">
-                <a asp-controller="product" asp-action="index"><button>Continue shopping</button></a>
-            </div>
-        </div>
-    </div>
+    <span class="text-black">Your cart is empty</span>
     <div class="py-5">
         <div class="container">
             <div class="row signup align-items-center justify-content-between">
@@ -139,7 +108,7 @@
         </div>
     </div>
     <script src="~/assets/js/jquery.js"></script>
-    <script src="~/assets/js/cart.js"></script>
+    <script src="~/assets/js/cart.js" asp-append-version="true"></script>
 </body>
 
 </html>

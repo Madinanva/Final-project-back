@@ -17,8 +17,8 @@ namespace ClarieTheme.Controllers
         }
         public IActionResult Index()
         {
-            List<About> model = _context.Abouts.Where(a => !a.IsDeleted).ToList();
-            return View(model);
+            About model = _context.Abouts.FirstOrDefault(a => !a.IsDeleted);
+             return View(model);
         }
     }
 }
