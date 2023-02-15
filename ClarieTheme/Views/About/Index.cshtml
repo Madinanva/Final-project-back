@@ -1,4 +1,4 @@
-﻿@model About
+﻿@model List<Team>
 @{
     ViewData["Title"] = "Index";
 }
@@ -52,21 +52,22 @@
         <h5><a asp-controller="home" asp-action="index">Home</a>/ About</h5>
     </div>
     <div class="second">
-            <div id=mlogo>
-                <img src="~/assets/images/@Model.Logo" alt="logo">
-                <div id="texts">
-                    <h4>@Model.MainTitle</h4>
-                    <p>
-                       @Model.Subtitle
-                    </p>
-                    <div id="imag">
-                        <img src="~/assets/images/@Model.Image" alt="">
-                        <img src="~/assets/images/@Model.Image" alt="">
-                    </div>
+        <div id=mlogo>
+            <img src="~/assets/images/productlogo.jpg" alt="logo">
+            <div id="texts">
+                <h4>Feel the peace inside</h4>
+                <p>
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore
+                    et dolore magna aliqua.
+                </p>
+                <div id="imag">
+                    <img src="~/assets/images/img28.jpg" alt="">
+                    <img src="~/assets/images/img29.jpg" alt="">
                 </div>
             </div>
+        </div>
     </div>
-       
+
     <div id="pottery">
         <h4>New ancient pottery</h4>
         <p>
@@ -102,7 +103,16 @@
                     Tellus ureumse dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut
                     labore et dolore magna aliqua.
                 </p>
-            
+                @foreach (var team in Model)
+                {
+                    <div class="meet">
+                        <div id="first">
+                            <img src="~/assets/images/@team.Image" alt="">
+                            <h3>@team.Fullname</h3>
+                            <h6>@team.Position</h6>
+                        </div>
+                    </div>
+                }
                 <div class="btm">
                     <a asp-controller="product" asp-action="index">Show more</a>
                 </div>

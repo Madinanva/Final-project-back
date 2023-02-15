@@ -56,7 +56,7 @@
                 {
                     <div class="cart products">
                         <div id="left" class="position-relative">
-                            <a href="" class="bg-black position-absolute start-0 top-0 px-2">
+                            <a asp-controller="basket" asp-action="deletefrombasket" asp-route-id="@basketVM.ProductId" class="bg-black position-absolute start-0 top-0 px-2">
                                 <i class="fa-solid fa-xmark"></i>
                             </a>
                             <img src="~/assets/images/product/@basketVM.Image" alt="">
@@ -90,7 +90,7 @@
     }
     else
     {
-        <span class="text-black">Your cart is empty</span>
+        <span class="text-black"style="font:35px; padding-left: 3rem">Your cart is empty</span>
     }
     <div class="py-5">
         <div class="container">

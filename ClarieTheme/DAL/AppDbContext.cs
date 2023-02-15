@@ -17,7 +17,7 @@ namespace ClarieTheme.DAL
         public DbSet<Slider> Sliders { get; set; }
         public DbSet<About> Abouts { get; set; }
         public DbSet<Contact> Contacts { get; set; }
-        //public DbSet<Subscribe> Subscribes { get; set; }
+        public DbSet<Subscribe> Subscribes { get; set; }
         public DbSet<Blog> Blogs { get; set; }
         public DbSet<BlogTag> BlogTags { get; set; }
         public DbSet<ProductType> ProductTypes { get; set; }

@@ -34,70 +34,116 @@ namespace ClarieTheme.Controllers
 
             return View( /*await _GetBasketContent(basketVMs)*/);
         }
+        //public async Task<IActionResult> AddToBasket(int? id)
+        //{
+        //    if (id == null)
+        //    {
+        //        return BadRequest("Id can't be null");
+        //    }
+        //    Product product = await _context.Products.FirstOrDefaultAsync(p => p.IsDeleted == false && p.Id == id);
+
+        //    if (!await _context.Products.AnyAsync(p => p.IsDeleted == false && p.Id == id))
+        //    {
+        //        return NotFound("Id is wrong");
+        //    }
+
+        //    string basket = HttpContext.Request.Cookies["basket"];
+        //    List<BasketVM> products = null;
+        //    if (!string.IsNullOrWhiteSpace(basket))
+        //    {
+        //        products = JsonConvert.DeserializeObject<List<BasketVM>>(basket);
+        //        BasketVM basketVM = products.Find(p => p.ProductId == id);
+        //        if (basketVM != null)
+        //        {
+        //            basketVM.Count += 1;
+        //        }
+        //        else
+        //        {
+        //            basketVM = new BasketVM
+        //            {
+        //                ProductId = (int)id,
+        //                Count = 1
+        //            };
+        //            products.Add(basketVM);
+        //        }
+        //    }
+        //    else
+        //    {
+        //        products = new List<BasketVM>();
+        //        BasketVM basketVM = new BasketVM
+        //        {
+        //            ProductId = (int)id,
+        //            Count = 1
+        //        };
+        //        products.Add(basketVM);
+
+
+        //    }
+        //    basket = JsonConvert.SerializeObject(products);
+        //    HttpContext.Response.Cookies.Append("basket", basket);
+        //    foreach (BasketVM item in products)
+        //    {
+        //        product = await _context.Products.FirstOrDefaultAsync(p => p.IsDeleted == false && p.Id == item.ProductId);
+        //        item.Title = product.Title;
+        //        item.Image = product.Image;
+        //        item.Price = product.Price;
+        //    }
+        //    return PartialView("_BasketPartial", products);
+        //}
+
         public async Task<IActionResult> AddToBasket(int? id)
         {
             if (id == null)
             {
-                return BadRequest("Id can't be null");
+                return BadRequest();
             }
-            Product product = await _context.Products.FirstOrDefaultAsync(p => p.IsDeleted == false && p.Id == id);
 
-            if (!await _context.Products.AnyAsync(p => p.IsDeleted == false && p.Id == id))
+            Product product = await _context.Products.FirstOrDefaultAsync(p => p.Id == id);
+
+            if (product == null)
             {
-                return NotFound("Id is wrong");
+                return NotFound();
             }
 
             string basket = HttpContext.Request.Cookies["basket"];
-            List<BasketVM> products = null;
-            if (!string.IsNullOrWhiteSpace(basket))
+
+            List<BasketVM> basketVMs = null;
+
+            if (basket != null)
             {
-                products = JsonConvert.DeserializeObject<List<BasketVM>>(basket);
-                BasketVM basketVM = products.Find(p => p.ProductId == id);
-                if (basketVM != null)
-                {
-                    basketVM.Count += 1;
-                }
-                else
-                {
-                    basketVM = new BasketVM
-                    {
-                        ProductId = (int)id,
-                        Count = 1
-                    };
-                    products.Add(basketVM);
-                }
+                basketVMs = JsonConvert.DeserializeObject<List<BasketVM>>(basket);
             }
             else
             {
-                products = new List<BasketVM>();
+                basketVMs = new List<BasketVM>();
+            }
+
+            if (basketVMs.Exists(b => b.ProductId == id))
+            {
+                basketVMs.Find(b => b.ProductId == id).Count++;
+            }
+            else
+            {
                 BasketVM basketVM = new BasketVM
                 {
-                    ProductId = (int)id,
-                    Count = 1
+                    ProductId = product.Id,
+                    Count = 1,
+                    Image = product.Image,
+                    Title = product.Title,
+                    Price = product.Price
                 };
-                products.Add(basketVM);
 
-
+                basketVMs.Add(basketVM);
             }
-            basket = JsonConvert.SerializeObject(products);
+
+
+            basket = JsonConvert.SerializeObject(basketVMs);
+
             HttpContext.Response.Cookies.Append("basket", basket);
-            foreach (BasketVM item in products)
-            {
-                product = await _context.Products.FirstOrDefaultAsync(p => p.IsDeleted == false && p.Id == item.ProductId);
-                item.Title = product.Title;
-                item.Image = product.Image;
-                item.Price = product.Price;
-            }
-            return PartialView("_BasketPartial", products);
+
+            return PartialView("_BasketPartial", basketVMs);
+
         }
-
-        //public async Task<IActionResult> Update(int? id, int count)
-        //{
-        //    return Content("Ok");
-        //}
-        //Ehtiyyac yoxdu ozuvu yorma obirsileri eliyersen 
-
-
         public async Task<IActionResult> DeleteFromBasket(int? id)
         {
             if (id == null)
