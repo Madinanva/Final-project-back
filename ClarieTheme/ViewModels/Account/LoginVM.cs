@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace Allup.Areas.Manage.ViewModels.Account
+namespace ClarieTheme.ViewModels.Account
 {
     public class LoginVM
     {
@@ -12,7 +12,6 @@ namespace Allup.Areas.Manage.ViewModels.Account
         public string Email { get; set; }
         [DataType(DataType.Password)]
         public string Password { get; set; }
-        public bool RemindMe { get; set; }
 
     }
 }

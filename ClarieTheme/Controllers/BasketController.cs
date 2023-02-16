@@ -128,6 +128,38 @@ namespace ClarieTheme.Controllers
             return PartialView("_BasketPartial", products);
 
         }
+
+        public async Task<IActionResult> UpdateCount(int? id, int count)
+        {
+            if (id == null) return BadRequest();
+
+            if (!await _context.Products.AnyAsync(p => p.Id == id)) return NotFound();
+
+            string basket = HttpContext.Request.Cookies["basket"];
+            List<BasketVM> basketVMs = null;
+            if (!string.IsNullOrWhiteSpace(basket))
+            {
+                basketVMs = JsonConvert.DeserializeObject<List<BasketVM>>(basket);
+
+                BasketVM basketVM = basketVMs.FirstOrDefault(b => b.ProductId == id);
+
+                if (basketVM == null) return NotFound();
+
+                basketVM.Count = count <= 0 ? 1 : count;
+
+                basket = JsonConvert.SerializeObject(basketVMs);
+
+                HttpContext.Response.Cookies.Append("basket", basket);
+               
+            }
+            else
+            {
+                return BadRequest();
+            }
+
+            return PartialView("_BasketPartial");
+        }
+
         public async Task<IActionResult> GetBasketContent()
         {
             string pro = HttpContext.Request.Cookies["basket"];

@@ -10,6 +10,6 @@ namespace ClarieTheme.Models
     public class AppUser : IdentityUser
     {
         [StringLength(2000)]
-        public string Fullname { get; set; }
+        public string Name { get; set; }
     }
 }

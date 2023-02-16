@@ -1,7 +1,9 @@
 using ClarieTheme.DAL;
+using ClarieTheme.Models;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -31,6 +33,22 @@ namespace ClarieTheme
                 options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection"));
 
             });
+
+            services.AddHttpContextAccessor();
+            services.AddIdentity<AppUser, IdentityRole>(op =>
+            {
+                op.User.RequireUniqueEmail = true;
+                op.Password.RequiredLength = 6;
+                op.Password.RequireNonAlphanumeric = true;
+                op.Password.RequireDigit = true;
+                op.Password.RequireLowercase = true;
+                op.Password.RequireUppercase = true;
+
+
+                op.Lockout.AllowedForNewUsers = true;
+                op.Lockout.DefaultLockoutTimeSpan = TimeSpan.FromDays(20);
+                op.Lockout.MaxFailedAccessAttempts = 3;
+            }).AddDefaultTokenProviders().AddEntityFrameworkStores<AppDbContext>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -43,6 +61,8 @@ namespace ClarieTheme
 
             app.UseRouting();
             app.UseStaticFiles();
+            app.UseAuthentication();
+            app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>
             {
