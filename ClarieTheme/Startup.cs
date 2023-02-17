@@ -17,24 +17,49 @@ namespace ClarieTheme
 {
     public class Startup
     {
-        public IConfiguration Configuration { get; }
+        private readonly IConfiguration _configuration;
 
         public Startup(IConfiguration configuration)
         {
-            Configuration = configuration;
+            _configuration = configuration;
         }
         // This method gets called by the runtime. Use this method to add services to the container.
         // For more information on how to configure your application, visit https://go.microsoft.com/fwlink/?LinkID=398940
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddControllersWithViews();
-            services.AddDbContext<AppDbContext>(options =>
+            //services.AddControllersWithViews();
+            //services.AddDbContext<AppDbContext>(options =>
+            //{
+            //    options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection"));
+            //});
+
+            //services.AddHttpContextAccessor();
+            //services.AddIdentity<AppUser, IdentityRole>(op =>
+            //{
+            //    op.User.RequireUniqueEmail = true;
+            //    op.Password.RequiredLength = 6;
+            //    op.Password.RequireNonAlphanumeric = true;
+            //    op.Password.RequireDigit = true;
+            //    op.Password.RequireLowercase = true;
+            //    op.Password.RequireUppercase = true;
+
+
+            //    op.Lockout.AllowedForNewUsers = true;
+            //    op.Lockout.DefaultLockoutTimeSpan = TimeSpan.FromDays(20);
+            //    op.Lockout.MaxFailedAccessAttempts = 3;
+            //}).AddEntityFrameworkStores<AppDbContext>().AddDefaultTokenProviders();
+            string connectionString = _configuration.GetConnectionString("DefaultConnection");
+            services.AddDbContext<AppDbContext>(option =>
             {
-                options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection"));
-
+                option.UseSqlServer(connectionString);
             });
+            //services.AddScoped<LayoutService>();
 
-            services.AddHttpContextAccessor();
+            services.AddSession(opt =>
+            {
+                opt.IdleTimeout = TimeSpan.FromDays(100);
+            });
+            services.AddControllersWithViews();
             services.AddIdentity<AppUser, IdentityRole>(op =>
             {
                 op.User.RequireUniqueEmail = true;
@@ -48,7 +73,7 @@ namespace ClarieTheme
                 op.Lockout.AllowedForNewUsers = true;
                 op.Lockout.DefaultLockoutTimeSpan = TimeSpan.FromDays(20);
                 op.Lockout.MaxFailedAccessAttempts = 3;
-            }).AddDefaultTokenProviders().AddEntityFrameworkStores<AppDbContext>();
+            }).AddEntityFrameworkStores<AppDbContext>().AddDefaultTokenProviders();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

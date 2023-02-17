@@ -33,4 +33,10 @@ namespace ClarieTheme.Helpers
 
         }
     }
+
+    public enum Roless
+    {
+        Admin, Member, SuperAdmin
+    }
+
 }

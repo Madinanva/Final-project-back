@@ -31,6 +31,14 @@
                 <a asp-controller="about" asp-action="index" class="border-bottom py-2">About</a>
                 <a asp-controller="services" asp-action="index" class="border-bottom py-2">Services</a>
                 <a asp-controller="blog" asp-action="index" class="border-bottom py-2">Blog</a>
+                @if (User.Identity.IsAuthenticated)
+                {
+                    <a asp-controller="account" asp-action="logout" class="border-bottom py-2">Logout</a>
+                }
+                @if (User.IsInRole("Admin"))
+                {
+                    <a asp-area="manage" asp-controller="dashboard" asp-action="index" class="border-bottom py-2">Admin</a>
+                }
             </div>
 
             <span style="font-size:18px;cursor:pointer;padding-top: 6px;padding-right: 5px;" onclick="openNav()">
@@ -129,9 +137,7 @@
         <div class="container">
             <div class="row signup align-items-center justify-content-between">
                 <div class="col-lg-4">
-                    <div id="flogo">
-                        <img src="~/assets/images/footerlogo.jpg" alt="">
-                    </div>
+                    <img src="https://cdn.shopify.com/s/files/1/0569/6090/9499/files/footer-logo-new-1_x70@2x.png?v=1639659835" class="w-50" alt="">
                 </div>
                 <div class="col-lg-4">
                     <div id="signup">
@@ -176,7 +182,7 @@
                     <p>0000 - 123 - 456789</p>
                 </div>
                 <div id="footerlogo" class="col-lg-2">
-                    <img src="~/assets/images/img2.jpg" class="w-100" alt="">
+                    <img src="https://cdn.shopify.com/s/files/1/0569/6090/9499/files/home-icon-1.png" class="w-75" alt="">
                 </div>
             </div>
         </div>

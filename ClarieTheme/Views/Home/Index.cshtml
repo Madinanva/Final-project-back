@@ -36,6 +36,14 @@
                 <a asp-controller="about" asp-action="index" class="border-bottom py-2">About</a>
                 <a asp-controller="services" asp-action="index" class="border-bottom py-2">Services</a>
                 <a asp-controller="blog" asp-action="index" class="border-bottom py-2">Blog</a>
+                @if (User.Identity.IsAuthenticated)
+                {
+                    <a asp-controller="account" asp-action="logout" class="border-bottom py-2">Logout</a>
+                }
+                @if (User.IsInRole("Admin"))
+                {
+                    <a asp-area="manage" asp-controller="dashboard" asp-action="index" class="border-bottom py-2">Admin</a>
+                }
             </div>
             <span style="font-size:18px;cursor:pointer;padding-top: 6px;padding-right: 5px;" onclick="openNav()">
                 &#9776;
@@ -195,7 +203,7 @@
     </div>
     <div class="video">
         <div id="video">
-            <a href="https://www.youtube.com/embed/JJMPKgyCoSY?start=7&autoplay=1&showinfo=0&iv_load_policy=3&rel=0&mute=1&controls=0">
+            <a href="https://youtu.be/TDQz3u2uqK8">
                 <img src="~/assets/images/videologo.jpg" alt="">
             </a>
         </div>
@@ -209,47 +217,41 @@
             </div>
         </div>
         <div class="blog">
-            <div id="lft">
-                <p>By Ram M / November 23, 2021</p>
-                <h4><a asp-controller="blog" asp-action="index">Proud of making colorful handmade pottery look</a></h4>
-                <h5><a asp-controller="blog" asp-action="index">Read more</a></h5>
-                <span>______________________________________</span>
-                <p>By Ram M / November 23, 2021</p>
-                <h4><a asp-controller="blog" asp-action="index">Own a piece of an artist with trending pottery</a></h4>
-                <h5><a asp-controller="blog" asp-action="index">Read more</a></h5>
-                <span>______________________________________</span>
-                <p>By Ram M / November 10, 2021</p>
-                <h4><a asp-controller="blog" asp-action="index">Learning pot making through online courses</a></h4>
-                <h5><a asp-controller="blog" asp-action="index">Read more</a></h5>
-                <span>______________________________________</span>
-                <p>By Ram M / November 10, 2021</p>
-                <h4><a asp-controller="blog" asp-action="index">Handmade pottery with paired prices for future</a></h4>
-                <h5><a asp-controller="blog" asp-action="index">Read more</a></h5>
-            </div>
+          <div id="lft">
+            @foreach (var blog in Model.Blogs.TakeLast(4))
+            {
+                    <p>@blog.Author / @blog.Date.ToString(" MMMM dd yyyy")</p>
+                    <h4><a asp-controller="blog" asp-action="detail" asp-route-id="@blog.Id">@blog.Title</a></h4>
+                    <h5><a asp-controller="blog" asp-action="detail" asp-route-id="@blog.Id">Read more</a></h5>
+                    <span>______________________________________</span>
+            }
+                </div>
+
             <div id="cntr">
-                <img src="~/assets/images/img16.jpg" alt="">
-                <img src="~/assets/images/img17.jpg" alt="">
+                @foreach (var blog in Model.Blogs.TakeLast(2))
+	{
+                <a asp-controller="blog" asp-action="detail" asp-route-id="@blog.Id">
+                <img src="~/assets/images/blog/@blog.Image" alt="">
+                </a>
+	}
             </div>
-            <div id="rght">
-                <p>By Ram M / November 23, 2021</p>
-                <h4><a asp-controller="product" asp-action="index">Holding pottery of earth with feel and new style</a></h4>
-                <h6>
-                    Enieses cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec
-                    quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat...
-                </h6>
-                <h5><a asp-controller="blog" asp-action="index">Read more</a></h5>
-                <span>______________________________________</span>
-                <span>______________________________________</span>
-                <span>______________________________________</span>
-                <p>By Ram M / November 23, 2021</p>
-                <h4><a asp-controller="product" asp-action="index">Taking hold of handmade modern clay pottery</a></h4>
-                <h6>
-                    Orese cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec
-                    quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa...
-                </h6>
-                <h5><a asp-controller="blog" asp-action="index">Read more</a></h5>
+            <div id="rght" class="ps-3">
+                @foreach (var blog in Model.Blogs.TakeLast(2))
+                {
+                <p>@blog.Author / @blog.Date.ToString(" MMMM dd yyyy")</p>
+                    <h4><a asp-controller="blog" asp-action="detail" asp-route-id="@blog.Id">@blog.Title</a></h4>
+                    <h6>
+                        @blog.Description
+                    </h6>
+                    <h5>
+                        <a asp-controller="blog" asp-action="detail" asp-route-id="@blog.Id">Read More</a>
+                    </h5>
+                    <span>______________________________________</span>
+                    <span>______________________________________</span>
+                    <span>______________________________________</span>
+                }
             </div>
-        </div>
+            </div>
         <div class="follow">
             <h4>Follow Us</h4>
             <div class="boxx">
@@ -289,9 +291,7 @@
             <div class="container">
                 <div class="row signup align-items-center justify-content-between">
                     <div class="col-lg-4">
-                        <div id="flogo">
-                            <img src="~/assets/images/footerlogo.jpg" alt="">
-                        </div>
+                        <img src="https://cdn.shopify.com/s/files/1/0569/6090/9499/files/footer-logo-new-1_x70@2x.png?v=1639659835" class="w-50" alt="">
                     </div>
                     <div class="col-lg-4">
                         <div id="signup">
@@ -337,7 +337,7 @@
                         <p>0000 - 123 - 456789</p>
                     </div>
                     <div id="footerlogo" class="col-lg-2">
-                        <img src="~/assets/images/img2.jpg" class="w-100" alt="">
+                        <img src="https://cdn.shopify.com/s/files/1/0569/6090/9499/files/home-icon-1.png" class="w-75" alt="">
                     </div>
                 </div>
             </div>

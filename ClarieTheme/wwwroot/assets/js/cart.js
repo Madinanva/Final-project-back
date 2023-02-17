@@ -21,6 +21,29 @@ function openNav() {
         $input.change();
         return false;
     });
+
+      $(document).on('click', '.minus', function (e) {
+          e.preventDefault();
+          let inputCount = $(this).next().val();
+          let url = $(this).attr('href') + '/?count=' + inputCount;
+          fetch(url)
+              .then(res => res.text())
+              .then(date => {
+                  $(".basketindexcontainer").html(date);
+              });
+      })
+
+      $(document).on('click', '.plus', function (e) {
+          e.preventDefault();
+          let inputCount = $(this).prev().val();
+          let url = $(this).attr('href') + '/?count=' + inputCount;
+          fetch(url)
+              .then(res => res.text())
+              .then(date => {
+                  $(".basketindexcontainer").html(date);
+              });
+      })
+
 });
 
 
@@ -44,26 +67,5 @@ $(document).on('click', 'deletefrombasket', function (e) {
     });
 })
 
-//$(document).on('click', '.sub', function (e) {
-//    e.preventDefault();
-//    let inputCount = $(this).next().val();
-//    let url = $(this).attr('href') + '/?count=' + inputCount;
-//    fetch(url)
-//        .then(res => res.text())
-//        .then(date => {
-//            $(".basketindexcontainer").html(date);
-//        });
-//})
-
-//$(document).on('click', '.add', function (e) {
-//    e.preventDefault();
-//    let inputCount = $(this).next().val();
-//    let url = $(this).attr('href') + '/?count=' + inputCount;
-//    fetch(url)
-//        .then(res => res.text())
-//        .then(date => {
-//            $(".basketindexcontainer").html(date);
-//        });
-//})
 
 

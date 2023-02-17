@@ -10,6 +10,7 @@ namespace ClarieTheme.ViewModels
     {
         public IEnumerable<Product> Products{ get; set; }
         public IEnumerable<Slider> Sliders { get; set; }
+        public IEnumerable<Blog> Blogs { get; set; }
 
     }
 }

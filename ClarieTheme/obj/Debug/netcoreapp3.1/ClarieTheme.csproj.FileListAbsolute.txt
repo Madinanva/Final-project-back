@@ -156,7 +156,6 @@ C:\Users\Madina Nva\source\repos\ClarieTheme\ClarieTheme\obj\Debug\netcoreapp3.1
 C:\Users\Madina Nva\source\repos\ClarieTheme\ClarieTheme\obj\Debug\netcoreapp3.1\Razor\Views\Search\Index.cshtml.g.cs
 C:\Users\Madina Nva\source\repos\ClarieTheme\ClarieTheme\obj\Debug\netcoreapp3.1\Razor\Views\Services\Index.cshtml.g.cs
 C:\Users\Madina Nva\source\repos\ClarieTheme\ClarieTheme\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_SearchPartial.cshtml.g.cs
-C:\Users\Madina Nva\source\repos\ClarieTheme\ClarieTheme\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_TeamPartial.cshtml.g.cs
 C:\Users\Madina Nva\source\repos\ClarieTheme\ClarieTheme\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_BasketPartial.cshtml.g.cs
 C:\Users\Madina Nva\source\repos\ClarieTheme\ClarieTheme\obj\Debug\netcoreapp3.1\Razor\Areas\Manage\Views\Shared\_Layout.cshtml.g.cs
 C:\Users\Madina Nva\source\repos\ClarieTheme\ClarieTheme\obj\Debug\netcoreapp3.1\Razor\Areas\Manage\Views\Dashboard\Index.cshtml.g.cs

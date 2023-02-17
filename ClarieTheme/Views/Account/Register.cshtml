@@ -11,7 +11,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Clarie-theme</title> 
+    <title>Clarie-theme</title>
     <link rel="stylesheet" href="~/assets/css/bootstrap.css">
     <link rel="stylesheet" href="~/assets/css/account.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
@@ -34,6 +34,14 @@
                 <a asp-controller="about" asp-action="index" class="border-bottom py-2">About</a>
                 <a asp-controller="services" asp-action="index" class="border-bottom py-2">Services</a>
                 <a asp-controller="blog" asp-action="index" class="border-bottom py-2">Blog</a>
+                @if (User.Identity.IsAuthenticated)
+                {
+                    <a asp-controller="account" asp-action="logout" class="border-bottom py-2">Logout</a>
+                }
+                @if (User.IsInRole("Admin"))
+                {
+                    <a asp-area="manage" asp-controller="dashboard" asp-action="index" class="border-bottom py-2">Admin</a>
+                }
             </div>
 
             <span style="font-size:18px;cursor:pointer;padding-top: 6px;padding-right: 5px;" onclick="openNav()">
@@ -56,23 +64,21 @@
         <div class="alert alert-danger" asp-validation-summary="ModelOnly" style="z-index:100;opacity:0.5;width:100%"></div>
         <form method="post">
             <div id="input">
-                <input asp-for="Name" placeholder="Name">
+                <input asp-for="@Model.Name" placeholder="Name">
             </div>
-            <span asp-validation-for="Name" class="text text-danger"></span>
+            <span asp-validation-for="@Model.Name" class="text text-danger"></span>
             <div id="input">
-                <input asp-for="UserName" placeholder=" Last Name">
+                <input asp-for="@Model.UserName" placeholder="Username">
             </div>
-            <span asp-validation-for="UserName" class="text text-danger"></span>
-
+            <span asp-validation-for="@Model.UserName" class="text text-danger"></span>
             <div id="input">
-                <input asp-for="Email" placeholder="Email">
+                <input asp-for="@Model.Email" placeholder="Email">
             </div>
-            <span asp-validation-for="Email" class="text text-danger"></span>
-
+            <span asp-validation-for="@Model.Email" class="text text-danger"></span>
             <div id="input">
-                <input asp-for="Password" placeholder="Password">
+                <input asp-for="@Model.Password" placeholder="Password">
             </div>
-            <span asp-validation-for="Password" class="text text-danger"></span>
+            <span asp-validation-for="@Model.Password" class="text text-danger"></span>
 
             <div id="btn">
                 <button type="submit">Create</button>
@@ -84,13 +90,14 @@
             </div>
         </div>
     </div>
+
+
+
     <div class="py-5">
         <div class="container">
             <div class="row signup align-items-center justify-content-between">
                 <div class="col-lg-4">
-                    <div id="flogo">
-                        <img src="~/assets/images/footerlogo.jpg" alt="">
-                    </div>
+                    <img src="https://cdn.shopify.com/s/files/1/0569/6090/9499/files/footer-logo-new-1_x70@2x.png?v=1639659835" class="w-50" alt="">
                 </div>
                 <div class="col-lg-4">
                     <div id="signup">
@@ -136,7 +143,7 @@
                     <p>0000 - 123 - 456789</p>
                 </div>
                 <div id="footerlogo" class="col-lg-2">
-                    <img src="~/assets/images/img2.jpg" class="w-100" alt="">
+                    <img src="https://cdn.shopify.com/s/files/1/0569/6090/9499/files/home-icon-1.png" class="w-75" alt="">
                 </div>
             </div>
         </div>

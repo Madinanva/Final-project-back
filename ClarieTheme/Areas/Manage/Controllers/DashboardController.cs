@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 namespace ClarieTheme.Areas.Manage.Controllers
 {
      [Area("Manage")]
-     //[Authorize (Roles ="SuperAdmin")]
+     [Authorize (Roles ="Admin")]
     public class DashboardController : Controller
     {
         public IActionResult Index()

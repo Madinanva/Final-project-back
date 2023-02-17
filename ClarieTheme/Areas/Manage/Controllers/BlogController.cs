@@ -2,6 +2,7 @@
 using ClarieTheme.Extensions;
 using ClarieTheme.Helpers;
 using ClarieTheme.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
 using System;
@@ -12,6 +13,7 @@ using System.Threading.Tasks;
 namespace ClarieTheme.Areas.Manage.Controllers
 {
     [Area("Manage")]
+    [Authorize(Roles = "Admin")]
     public class BlogController : Controller
     {
         private readonly AppDbContext _context;

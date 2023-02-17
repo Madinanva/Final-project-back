@@ -225,14 +225,10 @@ input {
   margin-top: 1rem;
 }
 
-.col-lg-4 {
-  padding-left: 7rem;
-}
 
 .col-lg-4 h4 {
   font: 24px "Frank Ruhl Libre", serif;
   padding-bottom: 1rem;
-  padding-left: 1rem;
 }
 
 .col-lg-4 h6 {
